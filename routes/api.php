@@ -137,4 +137,3 @@ Route::post('usuariosdetalles', 'UsuariosDetallesController@addUsuarios')->name(
 Route::get('usuariosdetalles/{id}', 'UsuariosDetallesController@getUsuarios')->name('getUsuario');
 Route::put('usuariosdetalles/{id}', 'UsuariosDetallesController@editUsuarios')->name('editUsuario');
 Route::delete('usuariosdetalles/{id}', 'UsuariosDetallesController@deleteUsuarios')->name('deleteUsuario');
-

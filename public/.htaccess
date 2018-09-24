@@ -19,3 +19,17 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<IfModule mod_headers.c>
+  # Disable content sniffing, since it's an attack vector.
+  Header always set X-Content-Type-Options nosniff
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set X-Frame-Options *
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+  Header always unset X-Powered-By
+  Header always unset X-CF-Powered-By
+  Header always unset X-Mod-Pagespeed
+  Header always unset X-Pingback
+  Header always unset Date
+</IfModule>
