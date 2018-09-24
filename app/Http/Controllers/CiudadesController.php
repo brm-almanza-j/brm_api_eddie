@@ -5,26 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Otb_Ciudades;
 use App\Otb_Regionales;
+use App\Helpers\Recursos;
 
 class CiudadesController extends Controller
 {
     public function index(){
-        $city = Otb_Ciudades::with('regional')->orderBy('id', 'ASC')->paginate(5);
-        return view('admin.ciudades.index')->with('city', $city);
+        $ciudades = Otb_Ciudades::with('regional')->orderBy('id', 'ASC')->paginate(5);
+        return $ciudades->all();
     }
 
-    public function create(){
-        $relacion_regional = Otb_Regionales::all('id', 'nombre');
-        $atrib_regional = $relacion_regional->all('id', 'nombre');
-        $array_regional= array('0'=> 'Seleccionar...');
-        for($i=0; $i<count($atrib_regional); $i++){
-            $array_regional = $array_regional+[ $atrib_regional[$i]->id => $atrib_regional[$i]->nombre ];
-        }
-        return view('admin.ciudades.create')->with('select_regionales', $array_regional);
+    public function getAllCiudades(){
+        $all_ciudades = Otb_Ciudades::all();
+        return $all_ciudades;
     }
 
-    public function store(Request $request){
-        $ciudades = new Otb_Ciudades($request->all());
-        $ciudades->save();
+    public function addCiudades(Request $request){
+        $add_ciudades = Otb_Ciudades::create($request->all());
+        return $add_ciudades;
+    }
+
+    public function getCiudades($id){
+        $find_ciudad = Otb_ciudades::find($id);
+        return $find_ciudad;
+    }
+
+    public function editCiudades(Request $request, $id){
+        $edit_ciudades = $this->getCiudades($id);
+        $edit_ciudades->fill($request->all());
+        $edit_ciudades->save();
+        return $edit_ciudades;
+    }
+
+    public function deleteCiudades($id){
+        $del_ciudades = $this->getCiudades($id);
+        $del_ciudades->delete();
+        return $del_ciudades;
     }
 }

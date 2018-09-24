@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaOtbTipoOt extends Migration
+class CrearTablaOtbUsuarioOt extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CrearTablaOtbTipoOt extends Migration
      */
     public function up()
     {
-        Schema::create('otb_tipo_ot', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamp('fecha');
-            $table->string('tipo');
-            $table->integer('id_grupo');
+        Schema::create('otb_usuarios_ot', function (Blueprint $table) {
+            $table->integer('id_orde_trabajo');
+            $table->integer('id_usuario');
+            $table->tinyInteger('finalizado');
         });
     }
 
@@ -28,6 +27,6 @@ class CrearTablaOtbTipoOt extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('otb_tipo_ot');
+        //
     }
 }

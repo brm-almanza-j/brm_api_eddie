@@ -22,4 +22,8 @@ class otb_grupos extends Model
     public function perfiles(){
         return $this->hasMany('App\Otb_Perfiles', 'id');
     }
+
+    public function tipos_ots(){
+        return $this->hasMany('App\Otb_Tipos_Ots', 'id');
+    }
 }

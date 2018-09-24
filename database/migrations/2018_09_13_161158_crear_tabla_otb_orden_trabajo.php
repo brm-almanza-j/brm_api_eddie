@@ -24,11 +24,10 @@ class CrearTablaOtbOrdenTrabajo extends Migration
             $table->date('fecha_fin');
             $table->integer('id_cliente');
             $table->integer('id_marca');
+            $table->integer('id_grupo');
             $table->integer('id_tipo_ot');
-            $table->integer('id_subtipo_ot');
             $table->time('tiempo_asignado');
-            $table->integer('id_usuaario_crea');
-            $table->integer('id_usuario_responsable');
+            $table->integer('id_usuario_crea');
             $table->integer('id_franja_horaria');
             $table->time('tiempo_gastado');
             $table->text('url_archivos');

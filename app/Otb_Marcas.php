@@ -21,4 +21,8 @@ class Otb_Marcas extends Model
     public function cliente(){
         return $this->belongsTo('App\Otb_Clientes', 'id_cliente');
     }
+
+    public static function select_marca($id){
+        return Otb_Marcas::where('id_cliente', '=', $id)->get();
+    }
 }

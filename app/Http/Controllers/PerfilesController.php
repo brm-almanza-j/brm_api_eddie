@@ -3,28 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\Recursos;
 use App\Otb_Perfiles;
-use App\Otb_Grupos;
 
 class PerfilesController extends Controller
 {
     public function index(){
         $perfiles = Otb_Perfiles::with('grupo')->orderBy('id', 'ASC')->paginate(5);
-        return view('admin.perfiles.index')->with('perfiles', $perfiles);
+        return $perfiles->all();
     }
 
-    public function create(){
-        $relacion_grupo = Otb_Grupos::all('id', 'nombre');
-        $atrib_grupo = $relacion_grupo->all('id', 'nombre');
-        $array_grupo = array('0' => 'Seleccionar...');
-        for($i=0; $i<count($atrib_grupo); $i++){
-            $array_grupo = $array_grupo+[ $atrib_grupo[$i]->id => $atrib_grupo[$i]->nombre ];
-        }
-        return view('admin.perfiles.create')->with('select_grupo', $array_grupo);;
+    public function getAllPerfiles(){
+        $all_perfil = Otb_Perfiles::all();
+        return $all_perfil;
     }
 
-    public function store(Request $request){
-        $gru = new Otb_Perfiles($request->all());
-        $gru->save();
+    public function addPerfiles(Request $request){
+        $add_perfil = Otb_Perfiles::create($request->all());
+        return $add_perfil;
     }
-}
+
+    public function getPerfiles($id){
+        $find_perfil = Otb_Perfiles::find($id);
+        return $find_perfil;
+    }
+
+    public function editPerfiles(Request $request, $id){
+        $edit_perfil = $this->getPerfiles($id);
+        $edit_perfil->fill($request->all());
+        $edit_perfil->save();
+        return $edit_perfil;
+    }
+
+    public function deletePerfiles($id){
+        $del_perfil = $this->getPerfiles($id);
+        $del_perfil->delete();
+        return $del_perfil;
+    }
+ }

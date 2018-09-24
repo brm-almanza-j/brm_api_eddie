@@ -9,10 +9,10 @@ class Otb_Ordenes_Trabajos extends Model
     protected $table = "otb_orden_trabajo";
 
     protected $fillable = [
-        'identificador', 'fecha', 'id_estado', 'titulo', 
-        'descripcion', 'fecha_inicio', 'fecha_fin', 'id_cliente', 
-        'id_marca', 'id_tipo_ot', 'id_subtipo_ot', 'tiempo_asignado', 
-        'id_usuario_crea', 'id_usuario_responsable', 'id_franja_horaria', 
+        'identificador', 'fecha', 'id_estado', 'titulo',
+        'descripcion', 'fecha_inicio', 'fecha_fin', 'id_cliente',
+        'id_marca', 'id_tipo_ot', 'id_subtipo_ot', 'tiempo_asignado',
+        'id_usuario_crea', 'id_usuario_responsable', 'id_franja_horaria',
         'tiempo_gastado', 'url_archivos', 'fecha_cierre'
     ];
 

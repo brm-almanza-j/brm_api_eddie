@@ -8,34 +8,35 @@ use App\Otb_Regionales;
 class RegionalesController extends Controller
 {
     public function index(){
-        $reg = Otb_Regionales::orderBy('id', 'ASC')->paginate(5);
-        return view('admin.regionales.index')->with('reg', $reg);
+        $regionales = Otb_Regionales::orderBy('id', 'ASC')->paginate(5);
+        return $regionales->all();
     }
 
-    public function create(){
-        return view('admin.regionales.create');
+    public function getAllRegionles(){
+        $all_regional = Otb_Regionales::all();
+        return $all_regional;
     }
 
-    public function store(Request $request){
-        $regional = new Otb_Regionales($request->all());
-        $regional->save();
+    public function addRegionales(Request $request){
+        $add_regional = Otb_Regionales::create($request->all());
+        return $add_regional;
     }
 
-    public function edit($id){
-        $reg_edit = Otb_Regionales::find($id);
-        return view('admin.regionales.edit')->with('regional', $reg_edit);
+    public function getRegionales($id){
+        $find_regional = Otb_Regionales::find($id);
+        return $find_regional;
     }
 
-    public function update(Request $request, $id){
-        $reg_up = Otb_Regionales::find($id);
-        $reg_up->fill($request->all());
-        $reg_up->save();
-        return redirect()->route('regionales.index');
+    public function editRegionales(Request $request, $id){
+        $edit_regional = $this->getRegionales($id);
+        $edit_regional->fill($request->all());
+        $edit_regional->save();
+        return $edit_regional;
     }
 
-    public function destroy($id){
-        $regi_del= Otb_Regionales::find($id);
-        $regi_del->delete();
-        return redirect()->route('regionales.index');
+    public function deleteRegionales($id){
+        $del_regional = $this->getRegionales($id);
+        $del_regional->delete();
+        return $del_regional;
     }
 }

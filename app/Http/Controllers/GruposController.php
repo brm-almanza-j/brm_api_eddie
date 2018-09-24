@@ -3,28 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\Recursos;
 use App\Otb_Grupos;
-use App\Otb_Areas;
 
 class GruposController extends Controller
 {
     public function index(){
         $grupos = Otb_Grupos::with('area')->orderBy('id', 'ASC')->paginate(5);
-        return view('admin.grupos.index')->with('grupos', $grupos);
+        return $grupos->all();
     }
 
-    public function create(){
-        $relacion_area = Otb_Areas::all('id', 'nombre');
-        $atrib_area = $relacion_area->all('id', 'nombre');
-        $array_area = array('0' => 'Seleccionar...');
-        for($i=0; $i<count($atrib_area); $i++){
-            $array_area = $array_area+[ $atrib_area[$i]->id => $atrib_area[$i]->nombre ];
-        }
-        return view('admin.grupos.create')->with('select_area', $array_area);;
+    public function getAllGrupos(){
+        $all_grupos = Otb_Grupos::all();
+        return $all_grupos;
     }
 
-    public function store(Request $request){
-        $gru = new Otb_Grupos($request->all());
-        $gru->save();
+    public function addGrupos(Request $request){
+        $add_grupos = Otb_Grupos::create($request->all());
+        return $add_grupos;
+    }
+
+    public function getGrupos($id){
+        $find_grupos = Otb_Grupos::find($id);
+        return $find_grupos;
+    }
+
+    public function editGrupos(Request $request, $id){
+        $edit_grupos = $this->getGrupos($id);
+        $edit_grupos->fill($request->all());
+        $edit_grupos->save();
+        return $edit_grupos;
     }
 }
