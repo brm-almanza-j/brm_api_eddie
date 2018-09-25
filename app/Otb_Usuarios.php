@@ -29,7 +29,7 @@ class Otb_Usuarios extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+        'contrasena', 'remember_token',
     ];
 
     public function usuario(){

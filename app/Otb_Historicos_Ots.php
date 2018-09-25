@@ -15,11 +15,11 @@ class Otb_Historicos_Ots extends Model
     ];
 
     public function estado(){
-        return $this->belongsTo('App\Otb_Estados');
+        return $this->belongsTo('App\Otb_Estados','id_estado');
     }
 
     public function orden_trabajo(){
-        return $this->belongsTo('App\Otb_Ordenes_Trabajos');
+        return $this->belongsTo('App\Otb_Ordenes_Trabajos', 'id_orden_trabajo');
     }
 
     public function usuario_comenta(){

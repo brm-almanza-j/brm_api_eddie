@@ -10,12 +10,16 @@ class Otb_Usuarios_Detalles extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_usuario', 'id_area', 'id_ciudad', 'id_grupo',
+        'id_usuario', 'id_acceso','id_area', 'id_ciudad', 'id_grupo',
         'id_perfil', 'id_franja_horaria', 'id_cliente'
     ];
 
     public function usuario(){
         return $this->belongsTo('App\Otb_Usuarios', 'id_usuario');
+    }
+
+    public function acceso(){
+        return $this->belongsTo('App\Otb_Usuarios', 'id_acceso');
     }
 
     public function area(){

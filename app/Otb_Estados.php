@@ -10,14 +10,14 @@ class Otb_Estados extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'fecha', 'estado'
+        'fecha', 'estado', 'color'
     ];
 
     public function ordenes_trabajos(){
-        return $this->hasMany('App\Otb_Ordenes_Trabajos');
+        return $this->hasMany('App\Otb_Ordenes_Trabajos', 'id');
     }
 
     public function historicos_ots(){
-        return $this->hasMany('App\Otb_Historicos_Ots');
+        return $this->hasMany('App\Otb_Historicos_Ots', 'id');
     }
 }
