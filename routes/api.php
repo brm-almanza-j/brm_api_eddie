@@ -45,6 +45,7 @@ Route::get('ciudades', 'CiudadesController@index')->name('viewCiudad');
 //Route::get('ciudades', 'CiudadesController@getAllCiudades')->name('getAllCiudad');
 Route::post('ciudades', 'CiudadesController@addCiudades')->name('addCiudad');
 Route::get('ciudades/{id}', 'CiudadesController@getCiudades')->name('getCiudad');
+Route::get('ciudades_regionales/{id}', 'CiudadesController@getC')->name('getCiudadRegional');
 Route::put('ciudades/{id}', 'CiudadesController@editCiudades')->name('editCiudad');
 Route::delete('ciudades/{id}', 'CiudadesController@deleteCiudades')->name('deleteCiudad');
 
@@ -95,6 +96,7 @@ Route::get('marcas', 'MarcasController@index')->name('viewMarca');
 //Route::get('marcas', 'MarcasController@getAllMarcas')->name('getAllMarca');
 Route::post('marcas', 'MarcasController@addMarcas')->name('addMarca');
 Route::get('marcas/{id}', 'MarcasController@getMarcas')->name('getMarca');
+Route::get('marcas_clientes/{id}', 'MarcasController@getM')->name('getMarcaCliente');
 Route::put('marcas/{id}', 'MarcasController@editMarcas')->name('editMarca');
 Route::delete('marcas/{id}', 'MarcasController@deleteMarcas')->name('deleteMarca');
 
@@ -115,6 +117,7 @@ Route::get('tiposots', 'TiposOtsController@index')->name('viewTipo');
 //Route::get('tiposots', 'TiposOtsController@getAllTipos')->name('getAllTipo');
 Route::post('tiposots', 'TiposOtsController@addTipos')->name('addTipo');
 Route::get('tiposots/{id}', 'TiposOtsController@getTipos')->name('getTipo');
+Route::get('tipo_grupo/{id}', 'TiposOtsController@getT')->name('getTipoGrupo');
 Route::put('tiposots/{id}', 'TiposOtsController@editTipos')->name('editTipo');
 Route::delete('tiposots/{id}', 'TiposOtsController@deleteTipos')->name('deleteTipo');
 
@@ -126,7 +129,6 @@ Route::get('usuarios', 'UsuariosController@index')->name('viewUsuario');
 Route::post('usuarios', 'UsuariosController@addUsuarios')->name('addUsuario');
 Route::get('usuarios/{id}', 'UsuariosController@getUsuarios')->name('getUsuario');
 Route::put('usuarios/{id}', 'UsuariosController@editUsuarios')->name('editUsuario');
-Route::delete('usuarios/{id}', 'UsuariosController@deleteUsuarios')->name('deleteUsuario');
 
 /**
  * Rutas Usuarios Detalles
@@ -136,4 +138,23 @@ Route::get('usuariosdetalles', 'UsuariosDetallesController@index')->name('viewUs
 Route::post('usuariosdetalles', 'UsuariosDetallesController@addUsuarios')->name('addUsuario');
 Route::get('usuariosdetalles/{id}', 'UsuariosDetallesController@getUsuarios')->name('getUsuario');
 Route::put('usuariosdetalles/{id}', 'UsuariosDetallesController@editUsuarios')->name('editUsuario');
-Route::delete('usuariosdetalles/{id}', 'UsuariosDetallesController@deleteUsuarios')->name('deleteUsuario');
+
+/**
+ * Rutas Ots
+ */
+Route::get('ots/{id}', 'OrdenesTrabajosController@index')->name('viewOts');
+//Route::get('ots', 'OrdenesTrabajosController@getAllOts')->name('getAllOts');
+Route::post('ots', 'OrdenesTrabajosController@addOts')->name('addOts');
+Route::get('get_ots/{id}', 'OrdenesTrabajosController@getOts')->name('getOts');
+Route::put('ots/{id}', 'OrdenesTrabajosController@editOts')->name('editOts');
+
+/**
+ * Rutas Filtros
+ */
+Route::get('ots_estados/{id}', 'OrdenesTrabajosController@getOtsEst')->name('getOtsEstados');
+
+/**
+ * Rutas Login
+ */
+Route::post('login', 'LoginController@auth')->name('auth');
+Route::get('login/{id}', 'LoginController@logout')->name('logout');

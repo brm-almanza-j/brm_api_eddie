@@ -40,4 +40,9 @@ class TiposOtsController extends Controller
         $del_tiposots->delete();
         return $del_tiposots;
     }
+
+    public function getT($id){
+        $relacion_tipos = Otb_Tipos_Ots::where('id_grupo', '=', $id)->get();
+        return $relacion_tipos;
+    }
 }

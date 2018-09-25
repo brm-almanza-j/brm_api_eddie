@@ -11,13 +11,17 @@ class Otb_Ordenes_Trabajos extends Model
     protected $fillable = [
         'identificador', 'fecha', 'id_estado', 'titulo',
         'descripcion', 'fecha_inicio', 'fecha_fin', 'id_cliente',
-        'id_marca', 'id_tipo_ot', 'id_subtipo_ot', 'tiempo_asignado',
-        'id_usuario_crea', 'id_usuario_responsable', 'id_franja_horaria',
+        'id_marca', 'id_grupo', 'id_tipo_ot', 'tiempo_asignado',
+        'id_usuario_crea', 'id_franja_horaria',
         'tiempo_gastado', 'url_archivos', 'fecha_cierre'
     ];
 
     public function historicos_ots(){
         return $this->hasMany('App\Otb_Historicos_Ots');
+    }
+
+    public function usuarios_ots(){
+        return $this->hasMany('App\Otb_Usuarios_Ots');
     }
 
     public function estado(){
@@ -32,19 +36,15 @@ class Otb_Ordenes_Trabajos extends Model
         return $this->belongsTo('App\Otb_Marcas');
     }
 
+    public function grupo(){
+        return $this->belongsTo('App\Otb_Grupos');
+    }
+
     public function tipo_ot(){
         return $this->belongsTo('App\Otb_Tipos_Ots');
     }
 
-    public function subtipo_ot(){
-        return $this->belongsTo('App\Otb_Subtipos_Ots');
-    }
-
     public function usuario_crea(){
-        return $this->belongsTo('App\Otb_Usuarios');
-    }
-
-    public function usuario_responsable(){
         return $this->belongsTo('App\Otb_Usuarios');
     }
 

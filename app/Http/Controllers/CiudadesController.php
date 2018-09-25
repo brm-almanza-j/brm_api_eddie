@@ -41,4 +41,9 @@ class CiudadesController extends Controller
         $del_ciudades->delete();
         return $del_ciudades;
     }
+
+    public function getC($id){
+        $relacion_ciudad = Otb_Ciudades::where('id_regional', '=', $id)->get();
+        return $relacion_ciudad;
+    }
 }

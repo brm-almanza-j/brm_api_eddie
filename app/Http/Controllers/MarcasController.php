@@ -41,4 +41,9 @@ class MarcasController extends Controller
         $del_marcas->delete();
         return $del_marcas;
     }
+
+    public function getM($id){
+        $response = Otb_Marcas::where('id_cliente', '=', $id)->get();
+        return $response;
+    }
 }

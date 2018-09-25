@@ -20,7 +20,7 @@ class Otb_Usuarios extends Authenticatable
 
     protected $fillable = [
         'fecha', 'nombre', 'usuario', 'contrasena',
-        'correo', 'priv_admin', 'activo'
+        'correo', 'priv_admin', 'activo', 'logueado'
     ];
 
     /**
@@ -29,7 +29,7 @@ class Otb_Usuarios extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'contrasena', 'remember_token',
+        'remember_token',
     ];
 
     public function usuario(){
@@ -41,7 +41,7 @@ class Otb_Usuarios extends Authenticatable
     }
 
     public function orden_trabajo_responsable(){
-        return $this->hasMany('App\Otb_Ordenes_Trabajos', 'id');
+        return $this->hasMany('App\Otb_Usuarios_Ots', 'id');
     }
 
     public function historicos_ots(){
