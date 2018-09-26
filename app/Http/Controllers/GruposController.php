@@ -10,7 +10,7 @@ class GruposController extends Controller
 {
     public function index(){
         $grupos = Otb_Grupos::with('area')->orderBy('id', 'ASC')->paginate(5);
-        return $grupos->all();
+        return $grupos;
     }
 
     public function getAllGrupos(){

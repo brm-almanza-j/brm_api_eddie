@@ -9,7 +9,7 @@ class EstadosController extends Controller
 {
     public function index(){
         $estados = Otb_Estados::orderBy('id', 'ASC')->paginate(5);
-        return $estados->all();
+        return $estados;
     }
 
     public function getAllEstados(){

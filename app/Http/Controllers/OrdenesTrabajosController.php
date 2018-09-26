@@ -14,9 +14,8 @@ class OrdenesTrabajosController extends Controller
         $ots = Otb_Ordenes_Trabajos::with('estado', 'cliente', 'marca', 'grupo', 'tipo_ot', 'usuario_crea', 'franja_horaria')
             ->join('otb_usuarios_ot', 'otb_orden_trabajo.id', '=', 'otb_usuarios_ot.id_orde_trabajo')
             ->where('otb_usuarios_ot.id_usuario', '=', $id_usuario)
-            ->orderBy('id', 'ASC')
-            ->paginate(5);
-        return $ots->all();
+            ->orderBy('id', 'ASC')->paginate(5);
+        return $ots;
     }
 
     public function getAllOts(){

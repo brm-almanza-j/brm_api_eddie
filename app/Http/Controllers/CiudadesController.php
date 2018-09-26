@@ -11,7 +11,7 @@ class CiudadesController extends Controller
 {
     public function index(){
         $ciudades = Otb_Ciudades::with('regional')->orderBy('id', 'ASC')->paginate(5);
-        return $ciudades->all();
+        return $ciudades;
     }
 
     public function getAllCiudades(){

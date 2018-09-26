@@ -12,7 +12,7 @@ class AreasController extends Controller
 {
     public function index(){
         $areas = Otb_Areas::with('ciudad', 'usuario_jefe')->orderBy('id', 'ASC')->paginate(5);
-        return $areas->all();
+        return $areas;
     }
 
     public function getAllAreas(){

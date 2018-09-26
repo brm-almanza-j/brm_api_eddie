@@ -11,7 +11,7 @@ class MarcasController extends Controller
 {
     public function index(){
         $marcas = Otb_Marcas::with('ciudad', 'cliente')->orderBy('id', 'ASC')->paginate(5);
-        return $marcas->all();
+        return $marcas;
     }
 
     public function getAllMarcas(){

@@ -11,9 +11,9 @@ use Cookie;
 class UsuariosDetallesController extends Controller
 {
     public function index(){
-        $usuarios = Otb_Usuarios_Detalles::with('usuario', 'acceso', 'area', 'ciudad', 'grupo', 'perfil', 'franja_horaria', 'cliente')->orderBy('id_usuario', 'ASC')->paginate(5);
-        //$usuarios = Otb_Usuarios::orderBy('id', 'ASC')->paginate(5);
-        return $usuarios->all();
+        $usuarios = Otb_Usuarios_Detalles::with('usuario', 'acceso', 'area', 'ciudad', 'grupo', 'perfil', 'franja_horaria', 'cliente')
+            ->orderBy('id_usuario', 'ASC')->paginate(5);
+        return $usuarios;
     }
 
     public function getAllUsuarios(){

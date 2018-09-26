@@ -10,7 +10,7 @@ class PerfilesController extends Controller
 {
     public function index(){
         $perfiles = Otb_Perfiles::with('grupo')->orderBy('id', 'ASC')->paginate(5);
-        return $perfiles->all();
+        return $perfiles;
     }
 
     public function getAllPerfiles(){

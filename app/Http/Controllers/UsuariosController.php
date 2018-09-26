@@ -12,7 +12,7 @@ class UsuariosController extends Controller
 {
     public function index(){
         $usuarios = Otb_Usuarios::orderBy('id', 'ASC')->paginate(5);
-        return $usuarios->all();
+        return $usuarios;
     }
 
     public function getAllUsuarios(){

@@ -11,7 +11,7 @@ class ClientesController extends Controller
 {
     public function index(){
         $clientes = Otb_Clientes::with('ciudad')->orderBy('id', 'ASC')->paginate(5);
-        return $clientes->all();
+        return $clientes;
     }
 
     public function getAllClientes(){

@@ -10,7 +10,7 @@ class TiposOtsController extends Controller
 {
     public function index(){
         $tiposots = Otb_Tipos_Ots::with('grupo')->orderBy('id', 'ASC')->paginate(5);
-        return $tiposots->all();
+        return $tiposots;
     }
 
     public function getAllTipos(){

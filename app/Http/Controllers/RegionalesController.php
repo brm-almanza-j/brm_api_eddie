@@ -9,7 +9,7 @@ class RegionalesController extends Controller
 {
     public function index(){
         $regionales = Otb_Regionales::orderBy('id', 'ASC')->paginate(5);
-        return $regionales->all();
+        return $regionales;
     }
 
     public function getAllRegionles(){

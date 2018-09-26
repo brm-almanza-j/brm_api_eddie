@@ -9,7 +9,7 @@ class FranjasHorariasController extends Controller
 {
     public function index(){
         $franjas = Otb_Franjas_Horarias::orderBy('id', 'ASC')->paginate(5);
-        return $franjas->all();
+        return $franjas;
     }
 
     public function getAllFranjas(){
